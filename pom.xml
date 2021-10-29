@@ -8,6 +8,10 @@
     <artifactId>core</artifactId>
     <version>1.1-SNAPSHOT</version>
 
+    <name>ShamPug Randoms</name>
+
+    <packaging>jar</packaging>
+
     <description>
         Features
         - a perfect dataset for valid and dependent adress records (local based)
@@ -25,12 +29,44 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <vertx.version>3.6.0</vertx.version>
 
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <finalName></finalName>
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <mainClass>com.tcmj.shampug.Version</mainClass>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <classpathLayoutType>repository</classpathLayoutType>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>version.txt</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
     <dependencies>
 
         <dependency>
