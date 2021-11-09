@@ -103,7 +103,7 @@ class CustomMemPugsTest {
 
         //and because of our custom initial random instanciation value of 1000L we get everytime the same result so we can obviously check for the content
         //this is only possible because of our hack that we alway use the 1000L as init for our random generator and because of passing this so called RandomUnit to all of our CustomMem instances
-        assertEquals(3.2, data.get("weight"));
+        assertEquals(4.2, data.get("weight"));
         assertEquals(Boolean.TRUE, data.get("leader"));
     }
 
@@ -125,24 +125,24 @@ class CustomMemPugsTest {
 
             //...comparing some of the values of seed 1000...
             if (i == 0) {
-                assertEquals("Sina", data.get("name"));
-                assertEquals(3.2d, data.get("weight"));
+                assertEquals("Lisa", data.get("name"));
+                assertEquals(4.2d, data.get("weight"));
             }
             if (i == 1) {
-                assertEquals("Bobby", data.get("name"));
-                assertEquals(8.2d, data.get("weight"));
+                assertEquals("Emmy", data.get("name"));
+                assertEquals(5.0d, data.get("weight"));
             }
             if (i == 2) {
-                assertEquals("Maxi", data.get("name"));
-                assertEquals(9.2d, data.get("weight"));
+                assertEquals("Surie", data.get("name"));
+                assertEquals(5.1d, data.get("weight"));
             }
             if (i == 3) {
-                assertEquals("Baby", data.get("name"));
-                assertEquals(6.5d, data.get("weight"));
+                assertEquals("Lisa", data.get("name"));
+                assertEquals(4.2d, data.get("weight"));
             }
             if (i == 4) {
-                assertEquals("Betzy", data.get("name"));
-                assertEquals(7.4d, data.get("weight"));
+                assertEquals("Surie", data.get("name"));
+                assertEquals(5.1d, data.get("weight"));
             }
 
         }

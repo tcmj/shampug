@@ -15,16 +15,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * [2] Simple Usage Tutorial for the custom in-memory data creation
  * This is the same as we saw in the {@link CustomMemPugsTest} but using countries instead.
- * This time our code can look a little bit more professional
+ * This time our code can look a little more professional
  */
-public class CustomMemCountriesTest {
+class CustomMemCountriesTest {
 
     public static final String CATEGORY_NAME = "countries";
     public static final long SEED = 223220222L;
     private static final Logger LOG = LoggerFactory.getLogger(CustomMemCountriesTest.class);
     private static final ShamPug SHAMPUG = ShamPug.setup()
         .withRegistryStrategy(Strategy.GLOBAL) //with GLOBAL we use a static instance which you also get by ShamPug#newGlobal
-        .usingSeed(SEED) // this is needed to get always the same random sequence and we can assert our test results
+        .usingSeed(SEED) // this is needed to get always the same random sequence, and we can assert our test results
         .create();
 
     /**
@@ -65,7 +65,7 @@ public class CustomMemCountriesTest {
         assertEquals(population, data.get("population"));
         assertEquals(density, data.get("density"));
         for (int i = 1; i <= 11; i++) {
-            LOG.info("We have just retrieved a random datarecord of our (In-Memory) {} category: {}", CATEGORY_NAME, SHAMPUG.get(CATEGORY_NAME));
+            LOG.info("We have just retrieved a random data record of our (In-Memory) {} category: {}", CATEGORY_NAME, SHAMPUG.get(CATEGORY_NAME));
         }
         int amount = 0;
         for (int i = 1; i <= 11111; i++) {

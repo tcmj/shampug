@@ -17,7 +17,7 @@ public class Randoms implements RandomUnit {
 
     /**
      * Constructor to get a {@link Random} object with a random seed.
-     * Internally a {@link ThreadLocalRandom} will be used
+     * Internally a {@link ThreadLocalRandom#current()} will be used
      */
     public Randoms() {
         this.random = ThreadLocalRandom.current();
@@ -27,7 +27,7 @@ public class Randoms implements RandomUnit {
      * Constructor to specify a seed in order to get a specific random behaviour.
      * @param seed any long number
      */
-    public Randoms(long seed) {
+    public Randoms(final long seed) {
         this.random = new Random(seed);
     }
 
@@ -55,22 +55,40 @@ public class Randoms implements RandomUnit {
         return this.random.nextLong();
     }
 
+    /**
+     * Any random integer number.
+     * @return integer within {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE} both <b>inclusive</b>!
+     */
     @Override
     public int nextInt() {
         return this.random.nextInt();
     }
 
+    /**
+     * Retrieve next random integer using a upper bound.
+     * @param bound upper bound (exclusive)
+     * @return next pseudo random integer
+     */
     @Override
     public final int nextInt(final int bound) {
-        return this.random.nextInt() * bound;
+        return this.random.nextInt(bound);
     }
 
+    /**
+     * Retrieve next random integer within a range.
+     * @param min lower bound (inclusive)
+     * @param max upper bound (exclusive)
+     * @return next pseudo random integer
+     */
     @Override
-    public final int nextInt(final int origin, final int bound) {
-        if (origin >= bound) {
+    public final int nextInt(final int min, final int max) {
+        if (min >= max) {
             throw new IllegalArgumentException("Upper bound must be greater than origin!");
         }
-        return origin + (this.random.nextInt() * (bound - origin));
+        if (this.random instanceof ThreadLocalRandom) {
+            return ((ThreadLocalRandom) this.random).nextInt(min, max);
+        }
+        return this.random.nextInt((max - min)) + min;
     }
 
     @Override
@@ -82,28 +100,41 @@ public class Randoms implements RandomUnit {
     /**
      * Returns a pseudorandom {@code long} value between the specified
      * origin (inclusive) and the specified bound (exclusive).
-     * @param origin the least value returned
-     * @param bound the upper bound (exclusive)
+     * @param min the least value returned
+     * @param max the upper bound (exclusive)
      * @return a pseudorandom {@code long} value between the origin (inclusive) and the bound (exclusive)
      * @throws IllegalArgumentException if {@code origin} is greater than or equal to {@code bound}
      */
     @Override
-    public final long nextLong(final long origin, final long bound) {
-        if (origin >= bound) {
+    public final long nextLong(final long min, final long max) {
+        if (min >= max) {
             throw new IllegalArgumentException("Upper bound must be greater than origin!");
         }
-        return origin + ((long) (this.random.nextDouble() * (bound - origin)));
+        if (this.random instanceof ThreadLocalRandom) {
+            return ((ThreadLocalRandom) this.random).nextLong(min, max);
+        }
+        return min + (this.random.nextLong() * (max - min));
+
     }
 
     /**
      * Returns a pseudorandom {@code long} value between zero and the specified bound (exclusive).
-     * @param bound the upper bound (exclusive)
+     * @param min the upper bound (exclusive)
      * @return a pseudorandom {@code long} value between the origin (inclusive) and the bound (exclusive)
      * @throws IllegalArgumentException if {@code origin} is greater than or equal to {@code bound}
      */
     @Override
-    public final long nextLong(final long bound) {
-        return ((long) (this.random.nextDouble() * (bound)));
+    public final long nextLong(final long min) {
+        if (this.random instanceof ThreadLocalRandom) {
+            return ((ThreadLocalRandom) this.random).nextLong(min);
+        }
+        long bits;
+        long val;
+        do {
+            bits = (this.random.nextLong() << 1) >>> 1;
+            val = bits % min;
+        } while (bits - val + (min - 1) < 0L);
+        return val;
     }
 
     /**
@@ -122,4 +153,5 @@ public class Randoms implements RandomUnit {
         }
         return this.rgxGen.generate(this.random);
     }
+
 }

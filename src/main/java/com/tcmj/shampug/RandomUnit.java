@@ -15,13 +15,13 @@ public interface RandomUnit {
 
     int nextInt(int bound);
 
-    int nextInt(int origin, int bound);
+    int nextInt(int min, int max);
 
     String nextHex();
 
-    long nextLong(long origin, long bound);
+    long nextLong(long min, long max);
 
-    long nextLong(long bound);
+    long nextLong(long min);
 
     String regex(String pattern);
 }
