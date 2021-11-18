@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * [2] Simple Usage Tutorial for the custom in-memory data creation
+ * <h2>Simple Usage / Tutorial for the custom in-memory data creation.</h2>
  * This is the same as we saw in the {@link CustomMemPugsTest} but using countries instead.
  * This time our code can look a little more professional
  */
@@ -23,7 +23,7 @@ class CustomMemCountriesTest {
     public static final long SEED = 223220222L;
     private static final Logger LOG = LoggerFactory.getLogger(CustomMemCountriesTest.class);
     private static final ShamPug SHAMPUG = ShamPug.setup()
-        .withRegistryStrategy(Strategy.GLOBAL) //with GLOBAL we use a static instance which you also get by ShamPug#newGlobal
+        .withRegistryStrategy(Strategy.GLOBAL) // with GLOBAL we use a static instance which you also get by ShamPug#newGlobal
         .usingSeed(SEED) // this is needed to get always the same random sequence, and we can assert our test results
         .create();
 
@@ -32,7 +32,7 @@ class CustomMemCountriesTest {
      */
     @BeforeAll
     static void setUp() {
-        //...create some data
+        // ...create some data
         SHAMPUG.put(new CustomMem(CATEGORY_NAME, SHAMPUG.getRandomUnit()).add("name", "Afghanistan").add("population", 38_928_346).add("area", 652_860).add("density", 60));
         SHAMPUG.put(new CustomMem(CATEGORY_NAME, SHAMPUG.getRandomUnit()).add("name", "Austria").add("population", 9_006_398).add("area", 82_409).add("density", 109));
         SHAMPUG.put(new CustomMem(CATEGORY_NAME, SHAMPUG.getRandomUnit()).add("name", "Cuba").add("population", 11_326_616).add("area", 106_440).add("density", 106));
@@ -40,7 +40,6 @@ class CustomMemCountriesTest {
         SHAMPUG.put(new CustomMem(CATEGORY_NAME, SHAMPUG.getRandomUnit()).add("name", "Russia").add("population", 145_934_462).add("area", 16_376_870).add("density", 9));
         SHAMPUG.put(new CustomMem(CATEGORY_NAME, SHAMPUG.getRandomUnit()).add("name", "United States of America").add("population", 331_002_651).add("area", 9_147_420).add("density", 36));
     }
-
 
     @Test
     void simpleUsage() {
@@ -55,7 +54,7 @@ class CustomMemCountriesTest {
         assertNotNull(population, "Population expected");
         assertNotNull(density, "Density expected");
 
-        //consistency check
+        // consistency check
         assertEquals(name, data.get("name"), "We should get the same field value as many times we call the get method");
         String nameA = data.get("name");
         String nameB = data.get("name");
