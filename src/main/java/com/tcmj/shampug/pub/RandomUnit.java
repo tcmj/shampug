@@ -1,4 +1,4 @@
-package com.tcmj.shampug;
+package com.tcmj.shampug.pub;
 
 /**
  * This interface kinda imitates the behaviour of standard java Random class.

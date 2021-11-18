@@ -1,7 +1,7 @@
 package com.tcmj.shampug.modules.custom;
 
-import com.tcmj.shampug.RandomUnit;
-import com.tcmj.shampug.Record;
+import com.tcmj.shampug.pub.RandomUnit;
+import com.tcmj.shampug.pub.Record;
 
 import java.util.HashMap;
 import java.util.Map;

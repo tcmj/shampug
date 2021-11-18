@@ -1,4 +1,4 @@
-package com.tcmj.shampug;
+package com.tcmj.shampug.pub;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,7 @@ class RandomsTest {
             lowerFound = true;
             System.out.println("lowerFound @ " + loop + " cut.nextInt(lower, upper) = " + result);
         }
-        if (result.equals(upper)) { //exclusive!
+        if (result.equals(upper)) { // exclusive!
             upperFound = true;
             System.out.println("upperFound @ " + loop + " cut.nextInt(lower, upper) = " + result);
         }
@@ -48,7 +48,7 @@ class RandomsTest {
 
     @Test
     void nextDouble() {
-        for (int i = 0; i < 12345; i++) {//test would take too long to search min and max!
+        for (int i = 0; i < 12345; i++) {// test would take too long to search min and max!
             double result = cut.nextDouble();
             assertTrue(result <= Double.MAX_VALUE, "Upper range should match (incl.)");
             assertTrue(result >= Double.MIN_VALUE, "Lower range should match (incl.)");
@@ -57,15 +57,15 @@ class RandomsTest {
 
     @Test
     void nextBoolean() {
-        for (int i = 0; i < 12345; i++) {//test would take too long to search min and max!
+        for (int i = 0; i < 12345; i++) {// test would take too long to search min and max!
             Boolean result = cut.nextBoolean();
             assertTrue(result instanceof Boolean, "Boolean created!");
         }
     }
 
     @Test
-    void nextInt() { //...Integer MIN and MAX (both inclusive)
-        for (int i = 0; i < 12345; i++) {//test would take too long to search min and max!
+    void nextInt() { // ...Integer MIN and MAX (both inclusive)
+        for (int i = 0; i < 12345; i++) {// test would take too long to search min and max!
             int result = cut.nextInt();
             assertTrue(result <= Integer.MAX_VALUE, "Upper range should match (incl.)");
             assertTrue(result >= Integer.MIN_VALUE, "Lower range should match (incl.)");
@@ -73,7 +73,7 @@ class RandomsTest {
     }
 
     @Test
-    void nextIntUpperBound() { //...from zero to upper bound!
+    void nextIntUpperBound() { // ...from zero to upper bound!
         int upper = 12030, loop = 0;
         LoopResult lRes = new LoopResult();
         do {
@@ -102,7 +102,7 @@ class RandomsTest {
 
     @Test
     void nextLong() {
-        for (int i = 0; i < 12345; i++) {//test would take too long to search min and max!
+        for (int i = 0; i < 12345; i++) {// test would take too long to search min and max!
             long result = cut.nextLong();
             assertTrue(result <= Long.MAX_VALUE, "Upper range should match (incl.)");
             assertTrue(result >= Long.MIN_VALUE, "Lower range should match (incl.)");
@@ -136,7 +136,7 @@ class RandomsTest {
 
     @Test
     void nextHex() {
-        for (int i = 0; i < 12345; i++) {//test would take too long to search min and max!
+        for (int i = 0; i < 12345; i++) {// test would take too long to search min and max!
             String result = cut.nextHex();
             assertTrue(Long.valueOf(result, 16) instanceof Long, "Hex not valid: " + result);
         }

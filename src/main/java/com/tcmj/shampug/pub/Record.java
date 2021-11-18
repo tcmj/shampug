@@ -1,4 +1,4 @@
-package com.tcmj.shampug;
+package com.tcmj.shampug.pub;
 
 import java.util.Set;
 

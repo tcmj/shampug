@@ -1,8 +1,8 @@
 package com.tcmj.shampug.modules.custom.mem;
 
-import com.tcmj.shampug.Record;
 import com.tcmj.shampug.ShamPug;
 import com.tcmj.shampug.intern.Registry.Strategy;
+import com.tcmj.shampug.pub.Record;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

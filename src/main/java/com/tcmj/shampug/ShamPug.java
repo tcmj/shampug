@@ -4,6 +4,9 @@ import com.tcmj.shampug.intern.Registry;
 import com.tcmj.shampug.intern.Registry.Strategy;
 import com.tcmj.shampug.intern.ShamPugException;
 import com.tcmj.shampug.modules.custom.AbstractRecord;
+import com.tcmj.shampug.pub.RandomUnit;
+import com.tcmj.shampug.pub.Randoms;
+import com.tcmj.shampug.pub.Record;
 
 import java.util.Objects;
 import java.util.Random;

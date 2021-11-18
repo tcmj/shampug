@@ -1,4 +1,4 @@
-package com.tcmj.shampug;
+package com.tcmj.shampug.pub;
 
 import com.github.curiousoddman.rgxgen.RgxGen;
 
@@ -7,8 +7,9 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
+ * <h2>Implementation of {@link RandomUnit}.</h2>
  * Similar to java.util.Random but with more functionality.
- * E.g. nextHex(), ...
+ * E.g. {@link #nextHex()} and {@link #regex(String)}
  */
 public class Randoms implements RandomUnit {
     private final java.util.Random random;

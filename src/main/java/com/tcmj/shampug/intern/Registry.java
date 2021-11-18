@@ -1,7 +1,7 @@
 package com.tcmj.shampug.intern;
 
 
-import com.tcmj.shampug.Record;
+import com.tcmj.shampug.pub.Record;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
