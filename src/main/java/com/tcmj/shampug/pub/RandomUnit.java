@@ -23,5 +23,30 @@ public interface RandomUnit {
 
     long nextLong(long min);
 
+    /**
+     * Creates a regular expression.
+     * amount of chars used for infinite expressions (e.g. '+') is 100
+     * creates case-sensitive results (e.g. 'a+b' creates 'aaab')
+     * @param pattern regex pattern to be used
+     * @return the random string based on the regex
+     */
     String regex(String pattern);
+
+    /**
+     * Creates a regular expression.
+     * creates case-sensitive results (e.g. 'a+b' creates 'aaab')
+     * @param pattern regex pattern to be used
+     * @param infinity amount of chars used for infinite expression ('+')
+     * @return the random string based on the regex
+     */
+    String regex(String pattern, int infinity);
+
+    /**
+     * Creates a regular expression.
+     * @param pattern regex pattern to be used
+     * @param infinity amount of chars used for infinite expression ('+')
+     * @param caseSensitivity true creates case sensitive results (e.g. 'aAaA'). false (default) creates 'aaaa'.
+     * @return the random string based on the regex
+     */
+    String regex(String pattern, int infinity, boolean caseSensitivity);
 }

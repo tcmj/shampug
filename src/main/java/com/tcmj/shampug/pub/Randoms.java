@@ -1,6 +1,8 @@
 package com.tcmj.shampug.pub;
 
 import com.github.curiousoddman.rgxgen.RgxGen;
+import com.github.curiousoddman.rgxgen.config.RgxGenOption;
+import com.github.curiousoddman.rgxgen.config.RgxGenProperties;
 
 import java.util.Objects;
 import java.util.Random;
@@ -147,11 +149,27 @@ public class Randoms implements RandomUnit {
      */
     @Override
     public String regex(final String pattern) {
+        return regexIntern(pattern, 100, false);
+    }
+
+    public String regex(final String pattern, int infinity) {
+        return regexIntern(pattern, infinity, false);
+    }
+
+    public String regex(final String pattern, int infinity, boolean caseSensitivity) {
+        return regexIntern(pattern, infinity, caseSensitivity);
+    }
+
+    private String regexIntern(final String pattern, int infinity, boolean caseSensitivity) {
         Objects.requireNonNull(pattern, "Regex pattern may not be null!");
         if (this.regexPattern == null || !this.regexPattern.equals(pattern)) {
             this.regexPattern = pattern;
             this.rgxGen = new RgxGen(pattern);
         }
+        RgxGenProperties rgxGenProperties = new RgxGenProperties();
+        rgxGenProperties.setProperty(RgxGenOption.INFINITE_PATTERN_REPETITION.getKey(), String.valueOf(infinity));
+        rgxGenProperties.setProperty(RgxGenOption.CASE_INSENSITIVE.getKey(), String.valueOf(caseSensitivity));
+        this.rgxGen.setProperties(rgxGenProperties);
         return this.rgxGen.generate(this.random);
     }
 

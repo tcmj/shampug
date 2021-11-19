@@ -71,10 +71,39 @@ public final class ShamPug {
     }
 
     /**
+     * Creates a random string based on a given regular expression.
      * Same as {@link #getRandomUnit()#regex(String)}
+     * For infinite patterns, such as a+, a* and a{n,}, defines limit (100) for the repetitions.
+     * @param pattern the regex pattern to be created
+     * @return the result of the pattern
      */
     public String regex(String pattern) {
         return this.randoms.regex(pattern);
+    }
+
+    /**
+     * Creates a random string based on a given regular expression.
+     * Same as {@link #getRandomUnit()#regex(String)}
+     * For infinite patterns, such as a+, a* and a{n,}, defines limit (100) for the repetitions.
+     * @param pattern the regex pattern to be created
+     * @param infinity amount of chars used at infinite modifiers (e.g.: 'a+b', 'a*b')
+     * @return the result of the pattern
+     */
+    public String regex(String pattern, int infinity) {
+        return this.randoms.regex(pattern, infinity);
+    }
+
+    /**
+     * Creates a random string based on a given regular expression.
+     * Same as {@link #getRandomUnit()#regex(String)}
+     * For infinite patterns, such as a+, a* and a{n,}, defines limit (100) for the repetitions.
+     * @param pattern the regex pattern to be created
+     * @param infinity amount of chars used at infinite modifiers (e.g.: 'a+b', 'a*b')
+     * @param caseSensitivity using true you can change the behaviour to get 'aAaA' instead of 'aaaa'
+     * @return the result of the pattern
+     */
+    public String regex(String pattern, int infinity, boolean caseSensitivity) {
+        return this.randoms.regex(pattern, infinity, caseSensitivity);
     }
 
     public <T extends Comparable<T>> Record<T> get(String address) {

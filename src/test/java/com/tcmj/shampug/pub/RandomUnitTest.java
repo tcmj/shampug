@@ -72,9 +72,15 @@ class RandomUnitTest {
 
     @Test
     void nextLongWithUpperBound() {
-        final Randoms randoms = new Randoms(69L);
-        // with seed = 69 we need  12.569.646 iterations to find our max value
-        final long max = 11111111111L;
+        final Randoms randoms = new Randoms(5000L);
+        // Results of finding 11.111.111.111:
+        // with seed = 69  we need   1.842.203.385 iterations to find our max value       (42s)
+        // with seed = 169L we need  3.229.376.111 iterations to find our max value    (1m 14s)
+        // with seed = 1000 we need  1.952.153.348 iterations to find our max value       (44s)
+        // with seed = 2000 we need  7.263.281.325 iterations to find our max value    (2m 36s)
+        final long max = 11_111_111L;
+        // with seed = 333.333 we need  29.078.177 iterations to find our max value of 11.111.111  (736ms)
+        // with seed =   5.000 we need   4.558.488 iterations to find our max value of 11.111.111  (154ms)
         long current = 0L;
         long counter = 0;
         while (current != max) {

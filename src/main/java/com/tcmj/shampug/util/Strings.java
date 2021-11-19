@@ -6,7 +6,7 @@ import java.util.Set;
 public final class Strings {
 
     private Strings() {
-        // not intended to be instanciated!
+        // not intended to be instantiated!
     }
 
     public static int compare(String str1, String str2) {
@@ -61,13 +61,11 @@ public final class Strings {
                             if (!ignoreCase) {
                                 return false;
                             }
-
                             if (Character.toUpperCase(c1) != Character.toUpperCase(c2) && Character.toLowerCase(c1) != Character.toLowerCase(c2)) {
                                 return false;
                             }
                         }
                     }
-
                     return true;
                 } else {
                     return false;
