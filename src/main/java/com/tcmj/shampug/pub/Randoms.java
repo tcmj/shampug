@@ -116,7 +116,8 @@ public class Randoms implements RandomUnit {
         if (this.random instanceof ThreadLocalRandom) {
             return ((ThreadLocalRandom) this.random).nextLong(min, max);
         }
-        return min + (this.random.nextLong() * (max - min));
+        //return min + (this.random.nextLong() * (max - min));
+        return this.nextLong((max - min)) + min;
 
     }
 

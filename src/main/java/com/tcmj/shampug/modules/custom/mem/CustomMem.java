@@ -36,7 +36,7 @@ public class CustomMem extends AbstractRecord<CustomMem> {
 
     @Override
     public Set<String> getTokens() {
-        return null;
+        return this.fields.keySet();
     }
 
 

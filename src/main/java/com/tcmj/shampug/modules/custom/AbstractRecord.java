@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public abstract class AbstractRecord<T extends Comparable<T>> implements Record<T>, Comparable<T> {
     protected final Map<String, Comparable<?>> fields = new HashMap<>();
     final String pugs;
-    final RandomUnit randomUnit;
+    final transient RandomUnit randomUnit;
 
     public AbstractRecord(String pugs, RandomUnit randomUnit) {
         this.pugs = pugs;

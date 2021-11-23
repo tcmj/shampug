@@ -64,6 +64,20 @@ class RandomUnitTest {
     }
 
     @Test
+    void nextLongWithBounds2() {
+        final Randoms randoms = new Randoms();
+        int counter = 0;
+        for (int i = 0; i < 100; i++) {
+
+            counter++;
+            final long nextLong = randoms.nextLong(1000, 9999);
+            System.out.println("nextLong = " + nextLong);
+
+        }
+        System.out.println("iterations to produces all numbers between 1000 and 9999 = " + counter);
+    }
+
+    @Test
     void nextLongWithIllegalBounds() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             ShamPug.newGlobal().getRandomUnit().nextLong(20000000000L, 10000000000L);
